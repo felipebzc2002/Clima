@@ -49,29 +49,29 @@ Este arquivo organiza a implementação do PRD descrito em [prd.md](prd.md) em f
 
 ## Fase 4 — Interface inicial
 
-- [ ] Criar o layout base com fundo escuro e container central branco arredondado.
+- [x] Criar o layout base com fundo escuro e container central branco arredondado.
   - Critério de aprovação: a tela possui o layout geral conforme descrito no PRD, com container centralizado e aparência visual consistente.
 
-- [ ] Criar a área superior com o campo de busca da cidade.
+- [x] Criar a área superior com o campo de busca da cidade.
   - Critério de aprovação: existe um campo de texto e um botão ou ação para iniciar a busca, centralizados na parte superior da tela.
 
-- [ ] Criar a sidebar esquerda para exibir informações principais do clima.
+- [x] Criar a sidebar esquerda para exibir informações principais do clima.
   - Critério de aprovação: a sidebar mostra, no mínimo, temperatura, dia atual, indicação de dia/noite e descrição do clima.
 
-- [ ] Criar a área principal para exibir os demais dados meteorológicos.
+- [x] Criar a área principal para exibir os demais dados meteorológicos.
   - Critério de aprovação: a área principal mostra, no mínimo, umidade, sensação térmica, vento e precipitação.
 
 ---
 
 ## Fase 5 — Estados de interface
 
-- [ ] Implementar o empty state inicial antes da primeira busca.
+- [x] Implementar o empty state inicial antes da primeira busca.
   - Critério de aprovação: ao abrir a aplicação pela primeira vez, a interface exibe uma mensagem clara orientando o usuário a pesquisar uma cidade.
 
-- [ ] Implementar o estado de carregamento durante a busca.
+- [x] Implementar o estado de carregamento durante a busca.
   - Critério de aprovação: ao iniciar uma pesquisa, a interface exibe feedback visual de carregamento e impede ações duplicadas de forma simples.
 
-- [ ] Implementar o estado de erro ou não encontrado quando a cidade não existir ou a consulta falhar.
+- [x] Implementar o estado de erro ou não encontrado quando a cidade não existir ou a consulta falhar.
   - Critério de aprovação: em caso de falha, a interface mostra uma mensagem amigável e mantém o layout estável.
 
 ---
