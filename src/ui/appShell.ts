@@ -1,3 +1,16 @@
+import { getWeather, searchCity } from '../services/weatherService'
+import { renderErrorState, renderLoadingState } from './stateViews'
+import { renderWeatherDashboard } from './weatherDashboard'
+
+function renderEmptyState(container: HTMLElement): void {
+  container.innerHTML = `
+    <div class="state-card empty-state-card" role="status">
+      <p class="label">Comece por aqui</p>
+      <p class="value">Pesquise uma cidade para ver o clima atual.</p>
+    </div>
+  `
+}
+
 export function renderAppShell(container: HTMLElement): void {
   container.innerHTML = `
     <section class="app-shell" aria-label="Aplicativo de clima">
@@ -19,47 +32,72 @@ export function renderAppShell(container: HTMLElement): void {
         </form>
       </header>
 
-      <main class="dashboard dashboard--hidden" aria-live="polite">
-        <aside class="sidebar" aria-label="Resumo do clima">
-          <div class="sidebar-card sidebar-card--highlight">
-            <p class="label">Temperatura</p>
-            <p class="value">--°C</p>
-          </div>
-          <div class="sidebar-card">
-            <p class="label">Dia atual</p>
-            <p class="value">--</p>
-          </div>
-          <div class="sidebar-card">
-            <p class="label">Período</p>
-            <p class="value">Dia / Noite</p>
-          </div>
-          <div class="sidebar-card">
-            <p class="label">Condição</p>
-            <p class="value">--</p>
-          </div>
-        </aside>
-
-        <section class="main-panel" aria-label="Detalhes do clima">
-          <div class="detail-grid">
-            <div class="detail-card">
-              <p class="label">Umidade</p>
-              <p class="value">--%</p>
-            </div>
-            <div class="detail-card">
-              <p class="label">Sensação térmica</p>
-              <p class="value">--°C</p>
-            </div>
-            <div class="detail-card">
-              <p class="label">Vento</p>
-              <p class="value">-- km/h</p>
-            </div>
-            <div class="detail-card">
-              <p class="label">Probabilidade de chuva</p>
-              <p class="value">--%</p>
-            </div>
-          </div>
-        </section>
-      </main>
+      <div id="status-region"></div>
     </section>
   `
+
+  const form = container.querySelector<HTMLFormElement>('#search-form')
+  const statusRegion = container.querySelector<HTMLDivElement>('#status-region')
+
+  if (!form || !statusRegion) {
+    return
+  }
+
+  const input = form.querySelector<HTMLInputElement>('#city-input')
+  const button = form.querySelector<HTMLButtonElement>('.search-button')
+
+  const setBusyState = (isBusy: boolean): void => {
+    if (!input || !button) {
+      return
+    }
+
+    input.disabled = isBusy
+    button.disabled = isBusy
+    button.textContent = isBusy ? 'Buscando...' : 'Buscar'
+    form.setAttribute('aria-busy', String(isBusy))
+  }
+
+  renderEmptyState(statusRegion)
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    if (form.getAttribute('aria-busy') === 'true') {
+      return
+    }
+
+    if (!input) {
+      return
+    }
+
+    const cityName = input.value.trim()
+
+    if (!cityName) {
+      renderErrorState(statusRegion, 'Informe o nome de uma cidade para continuar.')
+      return
+    }
+
+    setBusyState(true)
+    renderLoadingState(statusRegion)
+
+    try {
+      const city = await searchCity(cityName)
+
+      if (!city) {
+        renderErrorState(statusRegion, 'Não foi possível encontrar essa cidade. Tente novamente.')
+        return
+      }
+
+      const weather = await getWeather(city)
+
+      if (!weather) {
+        renderErrorState(statusRegion, 'Não foi possível carregar as informações do clima dessa cidade.')
+        return
+      }
+
+      renderWeatherDashboard(statusRegion, weather)
+    } finally {
+      setBusyState(false)
+    }
+  })
 }

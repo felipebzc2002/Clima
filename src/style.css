@@ -34,6 +34,7 @@ body {
   border-radius: 24px;
   padding: 32px;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
 }
 
 .app-header {
@@ -76,6 +77,12 @@ h1 {
   padding: 12px 16px;
   font-size: 1rem;
   color: #132238;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #4b5563;
+  box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.15);
 }
 
 .search-button {
@@ -86,6 +93,11 @@ h1 {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
+}
+
+.search-button:disabled {
+  opacity: 0.75;
+  cursor: wait;
 }
 
 .dashboard {
@@ -110,6 +122,7 @@ h1 {
   background: #f8fafc;
   border-radius: 16px;
   padding: 16px;
+  min-height: 96px;
 }
 
 .sidebar-card--highlight {
@@ -124,8 +137,9 @@ h1 {
 .state-card {
   background: #f8fafc;
   border-radius: 16px;
-  padding: 16px;
+  padding: 20px;
   border: 1px solid #e5e7eb;
+  text-align: center;
 }
 
 .loading-state {

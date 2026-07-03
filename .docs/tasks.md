@@ -78,34 +78,34 @@ Este arquivo organiza a implementação do PRD descrito em [prd.md](prd.md) em f
 
 ## Fase 6 — Transformação e apresentação dos dados
 
-- [ ] Transformar os dados brutos da API em um formato interno de uso da interface.
+- [x] Transformar os dados brutos da API em um formato interno de uso da interface.
   - Critério de aprovação: existe uma etapa de conversão dos dados recebidos em um modelo simples e reutilizável pela tela.
 
-- [ ] Implementar a interpretação do weather code para descrição textual em português.
+- [x] Implementar a interpretação do weather code para descrição textual em português.
   - Critério de aprovação: códigos conhecidos são convertidos em descrições legíveis, como “céu limpo”, “chuva” ou “tempestade”.
 
-- [ ] Interpretar o valor de `is_day` para mostrar se é dia ou noite.
+- [x] Interpretar o valor de `is_day` para mostrar se é dia ou noite.
   - Critério de aprovação: a interface exibe corretamente “Dia” ou “Noite” de acordo com o valor recebido.
 
 ---
 
 ## Fase 7 — Fluxo completo de busca
 
-- [ ] Conectar a interface ao fluxo de busca completo: buscar cidade, depois clima e exibir os resultados.
+- [x] Conectar a interface ao fluxo de busca completo: buscar cidade, depois clima e exibir os resultados.
   - Critério de aprovação: ao enviar uma busca válida, a aplicação realiza as duas etapas e mostra os dados correspondentes na interface.
 
-- [ ] Garantir que o fluxo pareça uma única ação para o usuário, com carregamento durante a execução.
+- [x] Garantir que o fluxo pareça uma única ação para o usuário, com carregamento durante a execução.
   - Critério de aprovação: o usuário vê um único processo de pesquisa com feedback consistente, sem quebra de experiência.
 
 ---
 
 ## Fase 8 — Ajustes finais e validação
 
-- [ ] Revisar a experiência visual para garantir alinhamento com o PRD.
+- [x] Revisar a experiência visual para garantir alinhamento com o PRD.
   - Critério de aprovação: o layout, espaçamento, contraste e organização visual estão coerentes com a proposta descrita em [prd.md](prd.md).
 
-- [ ] Validar os principais cenários de uso: sucesso, cidade não encontrada e erro de rede.
+- [x] Validar os principais cenários de uso: sucesso, cidade não encontrada e erro de rede.
   - Critério de aprovação: os cenários principais foram testados manualmente ou por verificação funcional e funcionam sem quebrar a interface.
 
-- [ ] Documentar quaisquer decisões técnicas pendentes ou melhorias futuras.
+- [x] Documentar quaisquer decisões técnicas pendentes ou melhorias futuras.
   - Critério de aprovação: há um registro claro de pendências, se existirem, sem comprometer a execução atual.

@@ -1,23 +1,8 @@
 import type { CitySearchApiResponse, CitySearchResult, WeatherApiResponse, WeatherCondition } from '../types/weather'
+import { transformWeatherData } from '../utils/weatherTransform'
 
 const GEO_SEARCH_URL = 'https://geocoding-api.open-meteo.com/v1/search'
 const WEATHER_FORECAST_URL = 'https://api.open-meteo.com/v1/forecast'
-
-function buildWeatherCondition(data: WeatherApiResponse, cityName: string): WeatherCondition {
-  return {
-    city: cityName,
-    temperature: data.current.temperature_2m,
-    humidity: data.current.relative_humidity_2m,
-    feelsLike: data.current.apparent_temperature,
-    isDay: data.current.is_day === 1,
-    windSpeed: data.current.wind_speed_10m,
-    windDirection: data.current.wind_direction_10m,
-    precipitationProbability: data.current.precipitation_probability,
-    weatherCode: data.current.weather_code,
-    weatherDescription: 'Condição climática disponível',
-    updatedAt: data.current.time,
-  }
-}
 
 function isValidCoordinate(value: number | undefined): value is number {
   return typeof value === 'number' && Number.isFinite(value)
@@ -90,7 +75,7 @@ export async function getWeather(city: CitySearchResult): Promise<WeatherConditi
       return null
     }
 
-    return buildWeatherCondition(payload, city.name)
+    return transformWeatherData(payload, city.name)
   } catch {
     return null
   }
