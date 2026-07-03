@@ -23,26 +23,26 @@ Este arquivo organiza a implementação do PRD descrito em [prd.md](prd.md) em f
 
 ## Fase 2 — Arquitetura e modelo de dados
 
-- [ ] Definir a arquitetura mínima da aplicação, separando responsabilidades entre UI, integração e utilidades.
+- [x] Definir a arquitetura mínima da aplicação, separando responsabilidades entre UI, integração e utilidades.
   - Critério de aprovação: o código inicial já organiza a lógica em módulos ou arquivos distintos, sem misturar responsabilidades em um único arquivo.
 
-- [ ] Criar um modelo de dados interno para representar as informações do clima.
-  - Critério de aprovação: existe um tipo ou interface que descreve os dados principais do clima a serem exibidos na interface.
+- [x] Criar um modelo de dados interno para representar as informações do clima.
+  - Critério de aprovação: existe um type que descreve os dados principais do clima a serem exibidos na interface.
 
 ---
 
 ## Fase 3 — Integração com a API Open-Meteo
 
-- [ ] Criar um módulo dedicado para buscar a cidade a partir do nome informado.
+- [x] Criar um módulo dedicado para buscar a cidade a partir do nome informado.
   - Critério de aprovação: a função realiza a requisição para o endpoint de geocodificação e retorna os dados esperados de cidade, latitude e longitude quando a resposta é válida.
 
-- [ ] Criar um módulo dedicado para buscar o clima com base em latitude e longitude.
+- [x] Criar um módulo dedicado para buscar o clima com base em latitude e longitude.
   - Critério de aprovação: a função realiza a requisição para o endpoint de clima e retorna os dados necessários para a tela.
 
-- [ ] Implementar validações nas funções de integração para garantir que os parâmetros necessários sejam informados.
+- [x] Implementar validações nas funções de integração para garantir que os parâmetros necessários sejam informados.
   - Critério de aprovação: as funções rejeitam entradas inválidas ou ausentes de forma previsível e sem quebrar a aplicação.
 
-- [ ] Tratar respostas inválidas, vazias ou incompletas das APIs.
+- [x] Tratar respostas inválidas, vazias ou incompletas das APIs.
   - Critério de aprovação: a aplicação recebe um resultado de erro ou ausência de dados de forma controlada e sem falhas inesperadas.
 
 ---
