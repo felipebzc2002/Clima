@@ -8,6 +8,14 @@ Aplicação web em TypeScript com Vite para visualizar informações meteorológ
 - TypeScript
 - CSS puro
 
+## 🌐 Demo
+
+Confira a aplicação em funcionamento aqui:
+
+- [Demo do projeto](https://seu-link-de-demo-aqui.com)
+
+Se quiser acompanhar o desenvolvimento ou compartilhar a versão atual com outras pessoas, você pode substituir o link acima pelo endereço da sua hospedagem ou do deploy.
+
 ## 📋 Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
